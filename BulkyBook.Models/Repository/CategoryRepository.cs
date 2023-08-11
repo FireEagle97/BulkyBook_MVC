@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BulkyBook.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,11 @@ namespace BulkyBook.Models.Repository.IRepository
         public CategoryRepository(ApplicationContext db) : base(db)
         {
            _db = db;
+        }
+
+        public void Save()
+        {
+            _db.SaveChanges();
         }
 
         public void Update(Category category)

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BulkyBook.Models.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,9 @@ namespace BulkyBook.Models.Repository.IRepository
             this.dbSet = _db.Set<T>();
         }
 
-        public void Add(T item)
+        public void Add(T entity)
         {
-            _db.Add(item);
+            dbSet.Add(entity);
         }
         //includeProp - "Category, CoverType"
         public IEnumerable<T> GetAll(string? includeProperties = null)
@@ -53,14 +54,19 @@ namespace BulkyBook.Models.Repository.IRepository
             return query.FirstOrDefault();
         }
 
-        public void Remove(T item)
+        public void Remove(T entity)
         {
-            dbSet.Remove(item);
+            dbSet.Remove(entity);
         }
 
-        public void RemoveRange(IEnumerable<T> items)
+        public void RemoveRange(IEnumerable<T> entites)
         {
-            dbSet.RemoveRange(items);
+            dbSet.RemoveRange(entites);
+        }
+
+        public void Update(T entity)
+        {
+            dbSet.Update(entity);
         }
     }
 }

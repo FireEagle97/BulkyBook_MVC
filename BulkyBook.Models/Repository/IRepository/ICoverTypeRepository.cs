@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BulkyBook.Models.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace BulkyBook.Models.Repository.IRepository
     public interface ICoverTypeRepository : IRepository<CoverType>
     {
         void Update(CoverType coverType);
-
+        void Save();
     }
 }
