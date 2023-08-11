@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace BulkyBookWeb.Models
+namespace BulkyBook.Models.Models
 {
     public partial class Category
     {

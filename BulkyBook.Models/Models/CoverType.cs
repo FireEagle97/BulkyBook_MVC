@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BulkyBookWeb.Models
+namespace BulkyBook.Models.Models
 {
     public partial class CoverType
     {

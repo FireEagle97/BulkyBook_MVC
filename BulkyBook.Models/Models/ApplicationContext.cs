@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace BulkyBookWeb.Models
+namespace BulkyBook.Models.Models
 {
     public partial class ApplicationContext : DbContext
     {

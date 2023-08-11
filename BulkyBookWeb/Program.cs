@@ -1,4 +1,4 @@
-using BulkyBookWeb.Models;
+using BulkyBook.Models.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
