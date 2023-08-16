@@ -20,6 +20,7 @@ namespace BulkyBook.Models.Repository.IRepository
             _db = db;
             //_db.Product.Include(u => u.Category).Include(u => u.CoverType);
             this.dbSet = _db.Set<T>();
+            _db.Product.Include(u => u.Category);
         }
 
         public void Add(T entity)
@@ -40,7 +41,7 @@ namespace BulkyBook.Models.Repository.IRepository
             return query.ToList();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
             query = query.Where(filter);

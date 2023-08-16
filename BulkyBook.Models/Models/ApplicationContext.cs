@@ -2,12 +2,13 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BulkyBook.Models.Models
 {
-    public partial class ApplicationContext : DbContext
+    public partial class ApplicationContext : IdentityDbContext
     {
         public ApplicationContext()
         {
@@ -24,6 +25,7 @@ namespace BulkyBook.Models.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime");
@@ -51,11 +53,7 @@ namespace BulkyBook.Models.Models
 
                 entity.Property(e => e.CategoryId).HasColumnName("categoryId");
 
-                entity.Property(e => e.CoverTypeId).HasColumnName("coverTypeId");
-
-                entity.Property(e => e.Description)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
+                entity.Property(e => e.Description).IsUnicode(false);
 
                 entity.Property(e => e.ImageUrl)
                     .HasMaxLength(100)
@@ -71,6 +69,12 @@ namespace BulkyBook.Models.Models
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Product)
+                    .HasForeignKey(d => d.CategoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Product_Category1");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/cl6g0c7z7vyyj21ib7akkw8uxdwt99xm3evteuk1hsotyi6c/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
     <header>
@@ -31,8 +34,8 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
-                                <a class="dropdown-item" asp-area="Admin" asp-controller="CoverType" asp-action="Index">Cover Types</a>
-                                @* <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Prodcuts List</a> *@
+                               @*  <a class="dropdown-item" asp-area="Admin" asp-controller="CoverType" asp-action="Index">Cover Types</a> *@
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Prodcuts List</a>
                             </div>
                         </li>
 
@@ -52,14 +55,17 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container text-center">
+    <footer class="border-top footer text-muted bg-primary">
+        <div class="text-center text-white">
             Made with <i class="bi bi-heart-fill"></i> by Dany.M
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
