@@ -5,11 +5,9 @@ VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkyBookWeb", "BulkyBookWeb\BulkyBookWeb.csproj", "{5E386FD9-67F0-45B7-82F9-94884235AF98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkyBook.DataAccess", "BulkyBook.DataAccess\BulkyBook.DataAccess.csproj", "{F74E450B-C805-4056-BDFB-840D191299F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkyBook.Models", "BulkyBook.Models\BulkyBook.Models.csproj", "{1EB0D6B0-999C-4C25-8F91-99025B8C73F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkyBook.Models", "BulkyBook.Models\BulkyBook.Models.csproj", "{1EB0D6B0-999C-4C25-8F91-99025B8C73F8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkyBook.Utility", "BulkyBook.Utility\BulkyBook.Utility.csproj", "{9A82420E-668A-430F-B12A-EFED4D3CBAF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BulkyBook.Utility", "BulkyBook.Utility\BulkyBook.Utility.csproj", "{9A82420E-668A-430F-B12A-EFED4D3CBAF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		{5E386FD9-67F0-45B7-82F9-94884235AF98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E386FD9-67F0-45B7-82F9-94884235AF98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E386FD9-67F0-45B7-82F9-94884235AF98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F74E450B-C805-4056-BDFB-840D191299F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F74E450B-C805-4056-BDFB-840D191299F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F74E450B-C805-4056-BDFB-840D191299F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F74E450B-C805-4056-BDFB-840D191299F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1EB0D6B0-999C-4C25-8F91-99025B8C73F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1EB0D6B0-999C-4C25-8F91-99025B8C73F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EB0D6B0-999C-4C25-8F91-99025B8C73F8}.Release|Any CPU.ActiveCfg = Release|Any CPU

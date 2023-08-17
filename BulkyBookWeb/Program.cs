@@ -12,8 +12,8 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
         builder.Configuration.GetConnectionString("DefaultConnection")
         ));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationContext>();
+builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var app = builder.Build();
 
@@ -30,7 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthentication();;
-
+app.MapRazorPages();
 app.UseAuthorization();
 
 app.MapControllerRoute(
