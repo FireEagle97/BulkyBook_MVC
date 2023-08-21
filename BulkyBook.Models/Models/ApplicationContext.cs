@@ -2,8 +2,8 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -19,7 +19,7 @@ namespace BulkyBook.Models.Models
             : base(options)
         {
         }
-        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
@@ -102,6 +102,11 @@ namespace BulkyBook.Models.Models
                 entity.HasIndex(e => e.NormalizedUserName, "UserNameIndex")
                     .IsUnique()
                     .HasFilter("([NormalizedUserName] IS NOT NULL)");
+
+                entity.Property(e => e.Discriminator)
+                    .IsRequired()
+                    .HasMaxLength(21)
+                    .HasDefaultValueSql("('')");
 
                 entity.Property(e => e.Email).HasMaxLength(256);
 

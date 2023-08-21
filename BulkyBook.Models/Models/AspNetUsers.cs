@@ -30,6 +30,12 @@ namespace BulkyBook.Models.Models
         public DateTimeOffset? LockoutEnd { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
+        public string Discriminator { get; set; }
+        public int? Name { get; set; }
+        public string City { get; set; }
+        public string PostalCode { get; set; }
+        public string State { get; set; }
+        public string StreetAddress { get; set; }
 
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogins> AspNetUserLogins { get; set; }

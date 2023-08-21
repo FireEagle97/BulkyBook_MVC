@@ -18,7 +18,6 @@ namespace BulkyBook.Models.Repository.IRepository
         public Repository(ApplicationContext db)
         {
             _db = db;
-            //_db.Product.Include(u => u.Category).Include(u => u.CoverType);
             this.dbSet = _db.Set<T>();
             _db.Product.Include(u => u.Category);
         }
