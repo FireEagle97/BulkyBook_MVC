@@ -20,6 +20,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Company]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[Product]",
          "ObjectType": 0
       }

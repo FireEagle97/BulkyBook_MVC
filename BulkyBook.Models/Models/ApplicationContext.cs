@@ -2,8 +2,8 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -21,8 +21,8 @@ namespace BulkyBook.Models.Models
         }
 
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,23 @@ namespace BulkyBook.Models.Models
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Company>(entity =>
+            {
+                entity.Property(e => e.City).HasMaxLength(100);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.PhoneNumber).HasMaxLength(50);
+
+                entity.Property(e => e.PostalCode).HasMaxLength(100);
+
+                entity.Property(e => e.State).HasMaxLength(100);
+
+                entity.Property(e => e.StreetAddress).HasMaxLength(150);
             });
 
             modelBuilder.Entity<Product>(entity =>
