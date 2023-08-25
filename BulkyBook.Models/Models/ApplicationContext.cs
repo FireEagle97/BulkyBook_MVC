@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BulkyBook.Models.Models
 {
-    public partial class ApplicationContext : IdentityDbContext<IdentityUser>
+    public partial class ApplicationContext : DbContext
     {
         public ApplicationContext()
         {
@@ -22,58 +22,12 @@ namespace BulkyBook.Models.Models
 
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Company> Company { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Category>(entity =>
-            {
-                entity.Property(e => e.CreatedAt).HasColumnType("datetime");
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Product>(entity =>
-            {
-                entity.HasIndex(e => e.CategoryId, "IX_Product_categoryId");
-
-                entity.Property(e => e.Author)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CategoryId).HasColumnName("categoryId");
-
-                entity.Property(e => e.Description).IsUnicode(false);
-
-                entity.Property(e => e.ImageUrl)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Isbn)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("ISBN");
-
-                entity.Property(e => e.Title)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Product)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Product_Category1");
-            });
-
-            OnModelCreatingPartial(modelBuilder);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

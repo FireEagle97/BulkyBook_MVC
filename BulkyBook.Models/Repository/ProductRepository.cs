@@ -23,7 +23,7 @@ namespace BulkyBook.Models.Repository
             if (objFromDb != null)
             {
                 objFromDb.Title = product.Title;
-                objFromDb.Isbn = product.Isbn;
+                objFromDb.ISBN = product.ISBN;
                 objFromDb.Description = product.Description;
                 objFromDb.Price = product.Price;
                 objFromDb.ListPrice = product.ListPrice;

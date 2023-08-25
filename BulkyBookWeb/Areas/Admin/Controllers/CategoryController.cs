@@ -53,7 +53,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
                 {
                     Name = obj.Name,
                     DisplayOrder = obj.DisplayOrder,
-                    CreatedAt = DateTime.Now
+                    //CreatedAt = DateTime.Now
                 };
                 _unitOfWork.Category.Add(InputUser);
                 _unitOfWork.Category.Save();
