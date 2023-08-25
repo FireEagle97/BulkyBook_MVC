@@ -6,16 +6,7 @@
 //using System.Text;
 //using System.Threading.Tasks;
 
-//namespace BulkyBook.Models.Repository
-//{
-//    public class CompanyRepository : Repository<Company>, ICompanyRepository
-//    {
-//        private readonly ApplicationContext _db;
 
-//        public CompanyRepository(ApplicationContext db) : base(db)
-//        {
-//            _db = db;
-//        }
 
 //        public void Update(Company company)
 //        {

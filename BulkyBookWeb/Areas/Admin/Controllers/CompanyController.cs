@@ -17,28 +17,6 @@
 //    {
 //        private readonly IUnitOfWork _unitOfWork;
 
-//        public CompanyController(IUnitOfWork unitOfWork)
-//        {
-//            _unitOfWork = unitOfWork;
-//        }
-//        public IActionResult Index()
-//        {
-//            List<Company> objCompanyList = _unitOfWork.Company.GetAll().ToList();
-//            return View(objCompanyList);
-//        }
-//        public IActionResult Upsert(int? id)
-//        {
-//            if (id == null || id == 0)
-//            {
-//                //create
-//                return View(new Company());
-//            }
-//            else
-//            {
-//                //update
-//                var companyFromDb = _unitOfWork.Company.Get(x => x.Id == id);
-//                return View(companyFromDb);
-//            }
 
 //        }
 //        [HttpPost]

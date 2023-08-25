@@ -2,8 +2,8 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -21,6 +21,7 @@ namespace BulkyBook.Models.Models
         }
 
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Company> Company { get; set; } 
 
