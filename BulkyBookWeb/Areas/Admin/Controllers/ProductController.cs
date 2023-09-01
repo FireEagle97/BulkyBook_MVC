@@ -8,11 +8,13 @@ using Newtonsoft.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using BulkyBook.Models.Models;
+using BulkyBook.Utility;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
 
     public class ProductController : Controller
     {

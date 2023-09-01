@@ -1,5 +1,7 @@
 ﻿using BulkyBook.Models.Models;
 using BulkyBook.Models.Repository.IRepository;
+using BulkyBook.Utility;
+using Microsoft.AspNetCore.Authorization;
 //using BulkyBook.Models.Repository.IRepository;
 //using BulkyBook.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BulkyBookWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

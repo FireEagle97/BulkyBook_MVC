@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BulkyBook.Models.Models
 {
-    public partial class ApplicationContext : DbContext
+    public partial class ApplicationContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationContext()
         {
@@ -21,9 +21,9 @@ namespace BulkyBook.Models.Models
         }
 
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<Company> Company { get; set; } 
+        public virtual DbSet<Company> Company { get; set; }
+        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

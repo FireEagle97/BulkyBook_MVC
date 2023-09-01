@@ -28,8 +28,8 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                     @*    @if(User.IsInRole(SD.Role_Admin))
-                        { *@
+                        @if(User.IsInRole(SD.Role_Admin))
+                        { 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 Content manager
@@ -40,7 +40,7 @@
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index">Companies</a>
                             </div>
                         </li>
-                       @*  } *@
+                        } 
                     </ul>
                     <partial name="_LoginPartial"/>
                     @*                    <form class="d-flex">
