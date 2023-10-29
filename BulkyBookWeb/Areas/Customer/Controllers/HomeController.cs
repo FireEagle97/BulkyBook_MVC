@@ -1,7 +1,10 @@
 ﻿using BulkyBook.Models.Models;
 using BulkyBook.Models.Repository.IRepository;
+using BulkyBook.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace BulkyBookWeb.Areas.Customer.Controllers
 {
@@ -22,11 +25,42 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
             IEnumerable<Product> productsList = _unitOfWork.Product.GetAll(includeProperties: "Category");
             return View(productsList);
         }
-
+        [HttpGet]
         public IActionResult Details(int id)
         {
-            Product product = _unitOfWork.Product.Get(u => u.Id == id,includeProperties: "Category");
-            return View(product);
+            ShoppingCart cart = new ShoppingCart
+            {
+                Product = _unitOfWork.Product.Get(u => u.Id == id, includeProperties: "Category"),
+                Count = 1,
+                ProductId = id
+            };
+            return View(cart);
+        }
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            shoppingCart.ApplicationUserId = userId;
+            ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.Get(u => u.ApplicationUserId == userId && u.ProductId == shoppingCart.ProductId);
+            if(cartFromDb != null)
+            {
+                //shopping car exists
+                cartFromDb.Count += shoppingCart.Count;
+                _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
+            }
+            else
+            {
+                _unitOfWork.ShoppingCart.Add(shoppingCart);
+                _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart,
+                    _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId).Count());
+            }
+            TempData["success"] = "Cart updated successfully";
+            
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()
