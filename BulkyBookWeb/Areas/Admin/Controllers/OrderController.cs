@@ -128,7 +128,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             OrderVM.OrderDetail = _unitOfWork.OrderDetail.GetAll(u => u.OrderHeaderId == OrderVM.OrderHeader.Id, includeProperties: "Product");
             //it s a regular customer account and we need to capture payment
             //add stripe logic
-            var domain = "https://localhost:44305/";
+            var domain = Request.Scheme + "://" + Request.Host.Value + "/";
             var options = new SessionCreateOptions
             {
                 SuccessUrl = domain + $"admin/order/PaymentConfirmation?orderHeaderId={OrderVM.OrderHeader.Id}",
