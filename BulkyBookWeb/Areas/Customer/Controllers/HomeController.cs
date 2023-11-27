@@ -22,7 +22,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<Product> productsList = _unitOfWork.Product.GetAll(includeProperties: "Category");
+            IEnumerable<Product> productsList = _unitOfWork.Product.GetAll(includeProperties: "Category,ProductImages");
             return View(productsList);
         }
         [HttpGet]
@@ -30,7 +30,7 @@ namespace BulkyBookWeb.Areas.Customer.Controllers
         {
             ShoppingCart cart = new ShoppingCart
             {
-                Product = _unitOfWork.Product.Get(u => u.Id == id, includeProperties: "Category"),
+                Product = _unitOfWork.Product.Get(u => u.Id == id, includeProperties: "Category,ProductImages"),
                 Count = 1,
                 ProductId = id
             };

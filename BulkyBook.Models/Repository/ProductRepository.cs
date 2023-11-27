@@ -31,11 +31,7 @@ namespace BulkyBook.Models.Repository
                 objFromDb.Price100 = product.Price100;
                 objFromDb.Author = product.Author;
                 objFromDb.CategoryId = product.CategoryId;
-                //objFromDb.CoverTypeId = product.CoverTypeId;
-                if (product.ImageUrl != null)
-                {
-                    objFromDb.ImageUrl = product.ImageUrl;
-                }
+                objFromDb.ProductImages = product.ProductImages;
             }
         }
         public void Save()

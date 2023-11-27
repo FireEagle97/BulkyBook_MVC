@@ -4,6 +4,7 @@ using BulkyBook.Models.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkyBook.Models.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20231122134539_AddProductImages")]
+    partial class AddProductImages
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,9 +243,12 @@ namespace BulkyBook.Models.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ProducyId")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("ProducyId");
 
                     b.ToTable("ProductImages");
                 });
@@ -553,7 +559,7 @@ namespace BulkyBook.Models.Migrations
                 {
                     b.HasOne("BulkyBook.Models.Models.Product", "Product")
                         .WithMany("ProductImages")
-                        .HasForeignKey("ProductId")
+                        .HasForeignKey("ProducyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
